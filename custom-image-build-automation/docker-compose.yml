@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  python-web-app:
+    build: .
+    image: custom-python-app:v2
+    container_name: python-app-instance
+    ports:
+      - "8080:8080"
+    enviroment:
+      - APP_NAME=Custom Enterprise Python App
+      - ENVIRONMENT=staging
+      - DEBUG=true
+    restart: unless-stopped
