@@ -1,0 +1,17 @@
+logs/
+*.log
+*.tmp
+temp.txt
+.git/
+.gitignore
+node_modules_dev/
+docs/
+README.md
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Dockerfile.*
+!Dockerfile.optimized
+dist/
+build/
