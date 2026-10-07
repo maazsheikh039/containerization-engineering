@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  secure-web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.readonly
+    ports:
+      - "8084:8080"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=100m
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+    security_opt:
+      - no-new-privileges:true
+    user: "1001:1001"
+    restart: unless-stopped

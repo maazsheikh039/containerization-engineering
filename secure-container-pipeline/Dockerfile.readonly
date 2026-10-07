@@ -1,0 +1,11 @@
+FROM python:3.9-alpine
+RUN apk update && apk upgrade && apk add --no-cache curl && \
+    addgroup -g 1001 -S appuser && adduser -u 1001 -S appuser -G appuser
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY app_readonly.py .
+RUN chown -R appuser:appuser /app
+USER appuser
+EXPOSE 8080
+CMD ["python", "app_readonly.py"]
